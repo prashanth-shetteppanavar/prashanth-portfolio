@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties for theming ─── */
+:root {
+  --c-ink: #0A0B0E;
+  --c-surface: #101218;
+  --c-line: #22252E;
+  --c-bone: #EDEEF2;
+  --c-mute: #8A8D98;
+  --c-accent: #7C5CFF;
+  --c-accent2: #F5A623;
+  --bg-nav: rgba(10, 11, 14, 0.9);
+  --c-glow: rgba(124, 92, 255, 0.18);
+  --c-wash: rgba(255, 255, 255, 0.04);
+  --transition-speed: 0.35s ease;
+}
+
+/* ─── Light mode overrides ─── */
+html.light {
+  --c-ink: #fdfcfa;
+  --c-surface: #f2ede6;
+  --c-line: #c9c0b3;
+  --c-bone: #14151a;
+  --c-mute: #5e5d58;
+  --c-accent: #5b46d6;
+  --c-accent2: #b85e0f;
+  --bg-nav: rgba(253, 252, 250, 0.92);
+  --c-glow: rgba(91, 70, 214, 0.14);
+  --c-wash: rgba(0, 0, 0, 0.045);
+}
+
+/* Light mode: boost faint borders / muted text that use opacity */
+html.light .border-line\/30 { border-color: rgba(201, 192, 179, 0.7); }
+html.light .border-line\/40 { border-color: rgba(201, 192, 179, 0.85); }
+html.light .border-line\/50 { border-color: rgba(201, 192, 179, 1); }
+html.light .text-mute\/50 { color: rgba(94, 93, 88, 0.75); }
+html.light .text-mute\/60 { color: rgba(94, 93, 88, 0.85); }
+html.light .bg-surface\/30 { background-color: rgba(242, 237, 230, 0.9); }
+html.light .bg-surface\/50 { background-color: rgba(242, 237, 230, 0.95); }
+html.light .bg-surface\/70 { background-color: rgba(242, 237, 230, 0.96); }
+html.light .bg-surface\/80 { background-color: rgba(242, 237, 230, 0.98); }
+html.light .bg-ink\/85 { background-color: rgba(253, 252, 250, 0.88); }
+html.light .bg-ink\/98 { background-color: rgba(253, 252, 250, 0.98); }
+html.light .text-mute\/70 { color: rgba(94, 93, 88, 0.9); }
+html.light .border-line\/25 { border-color: rgba(201, 192, 179, 0.6); }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  margin: 0;
+  background: var(--c-ink);
+  color: var(--c-bone);
+  font-family: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+  transition: background var(--transition-speed), color var(--transition-speed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Smooth theme transition for interactive elements only */
+a, button, [data-cursor] {
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* ─── Font faces ─── */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2') format('woff2');
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v21/tDbD2o-flEEny0FZhsf21TNYT6ljvH-yG16n.woff2') format('woff2');
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2yn6lkG50LoCZOIHX6k.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* ─── Subtle background grid ─── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: linear-gradient(var(--c-wash) 1px, transparent 1px), linear-gradient(90deg, var(--c-wash) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 72%);
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+
+::selection {
+  background: var(--c-accent);
+  color: var(--c-ink);
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Hide native cursor on fine pointers */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button {
+    cursor: none;
+  }
+}
+
+.font-display {
+  font-family: 'Sora', sans-serif;
+}
+.font-body {
+  font-family: 'DM Sans', sans-serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hero-scene canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--c-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-line);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-accent);
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Film grain overlay ─── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+html.light .grain-overlay {
+  opacity: 0.015;
+  mix-blend-mode: multiply;
+}
+
+/* ─── Keyframe animations ─── */
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes auroraFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -50px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(40px, 30px) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes studioFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.4deg); }
+}
+
+@keyframes toolsMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 0.625rem)); }
+}
+
+.tool-marquee-track {
+  animation: toolsMarquee 32s linear infinite;
+}
+
+@keyframes terminalBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
