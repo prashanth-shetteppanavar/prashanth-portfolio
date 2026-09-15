@@ -76,23 +76,9 @@ a, button, [data-cursor] {
 
 /* ─── Font faces ─── */
 @font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2') format('woff2');
-  font-weight: 300 700;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'JetBrains Mono';
   src: url('https://fonts.gstatic.com/s/jetbrainsmono/v21/tDbD2o-flEEny0FZhsf21TNYT6ljvH-yG16n.woff2') format('woff2');
   font-weight: 400 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DM Sans';
-  src: url('https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2yn6lkG50LoCZOIHX6k.woff2') format('woff2');
-  font-weight: 400 700;
   font-display: swap;
 }
 

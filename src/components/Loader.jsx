@@ -66,9 +66,9 @@ export default function Loader({ onDone }) {
       {/* Welcome */}
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }} className="text-center mb-7 relative z-10">
         <p className="font-mono text-[10px] tracking-[0.4em] uppercase text-accent mb-3">Welcome</p>
-        <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
+        <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
           to <span className="bg-gradient-to-r from-[#7C5CFF] to-[#F5A623] bg-clip-text text-transparent">Prashanth’s</span> Portfolio
-        </h1>
+        </div>
         <p className="mt-2 font-body text-xs sm:text-sm text-white/55 tracking-wide">Java Full Stack Developer · Bengaluru, India</p>
       </motion.div>
 

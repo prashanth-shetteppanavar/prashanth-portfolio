@@ -287,19 +287,19 @@ export default function Hero() {
 
             {/* Name */}
             <div className="mb-2 select-none">
-              <h1 className="font-display text-[13vw] md:text-[7.5vw] lg:text-[5.5vw] xl:text-[5vw] font-bold leading-[0.86] tracking-tight">
+              <h1 aria-label="Prashanth Shetteppanavar" className="font-display text-[13vw] md:text-[7.5vw] lg:text-[5.5vw] xl:text-[5vw] font-bold leading-[0.86] tracking-tight">
                 {FIRST_NAME.split("").map((ch, i) => (
                   <MagneticLetter key={i} ch={ch} i={i} />
                 ))}
-              </h1>
-              <motion.h2
+                <motion.span
                 initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
                 animate={{ opacity: 0.6, clipPath: "inset(0 0% 0 0)" }}
                 transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display text-[4.5vw] md:text-[2.5vw] lg:text-[1.8vw] xl:text-[1.5vw] text-bone uppercase font-light tracking-[0.2em] -mt-0.5"
+                  className="block font-display text-[4.5vw] md:text-[2.5vw] lg:text-[1.8vw] xl:text-[1.5vw] text-bone uppercase font-light tracking-[0.2em] -mt-0.5"
               >
                 {LAST_NAME}
-              </motion.h2>
+                </motion.span>
+              </h1>
             </div>
 
             {/* Rotating role */}
