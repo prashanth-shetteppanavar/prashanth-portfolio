@@ -14,6 +14,7 @@ import GithubStats from "./components/GithubStats";
 import Certificates from "./components/Certificates";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
+import ProjectPage from "./components/ProjectPage";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,8 +37,14 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  const projectMatch = window.location.pathname.match(/^\/projects\/([^/]+)\/?$/);
+  if (projectMatch) return <ProjectPage slug={projectMatch[1]} />;
+
   return (
     <div className="relative bg-ink">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-3 focus:text-bone">
+        Skip to main content
+      </a>
       <CustomCursor />
       {!loaded && <Loader onDone={handleDone} />}
       {loaded && (
@@ -48,15 +55,17 @@ export default function App() {
         </>
       )}
       <Navbar />
-      <Hero />
-      <About />
-      <Education />
-      <Skills />
-      <Projects />
-      <GithubStats />
-      <Certificates />
-      <Experience />
-      <Contact />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Education />
+        <Skills />
+        <Projects />
+        <GithubStats />
+        <Certificates />
+        <Experience />
+        <Contact />
+      </main>
     </div>
   );
 }

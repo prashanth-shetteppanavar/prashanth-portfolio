@@ -99,6 +99,8 @@ export default function Navbar() {
           <ThemeToggle />
           <button
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((v) => !v)}
             className="relative z-[70] w-9 h-9 flex flex-col items-center justify-center gap-[5px]"
           >
@@ -122,6 +124,9 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-navigation"
+            role="dialog"
+            aria-label="Mobile navigation"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

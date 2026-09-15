@@ -4,7 +4,7 @@ import { useInView } from "framer-motion";
 export default function CountUp({ to, decimals = 0, suffix = "", duration = 1.4 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(to);
 
   useEffect(() => {
     if (!inView) return;

@@ -1,73 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lightbox from "./Lightbox";
-import medislotImg from "../assets/projects/mock-medislot.svg";
-import storageImg from "../assets/projects/mock-storage.svg";
-import aiChatImg from "../assets/projects/mock-ai-chat.svg";
-import vvisaImg from "../assets/projects/mock-vvisa.svg";
-
-const PROJECTS = [
-  {
-    title: "MediSlot",
-    tag: "Healthcare",
-    number: "01",
-    desc: "A Smart Healthcare Booking System for doctor consultations and patient scheduling — a responsive HTML/CSS/JS frontend backed by JDBC-driven MySQL persistence.",
-    stack: ["HTML/CSS/JS", "JDBC", "MySQL"],
-    image: medislotImg,
-    github: "https://github.com/prashanth-shetteppanavar",
-    architecture: [
-      { label: "USER", type: "start" },
-      { label: "HTML/CSS/JS", type: "tech" },
-      { label: "JDBC", type: "tech" },
-      { label: "MySQL", type: "end" },
-    ],
-  },
-  {
-    title: "Decentralized File Storage Platform",
-    tag: "Blockchain",
-    number: "02",
-    desc: "A blockchain-backed file storage platform using IPFS for distributed, tamper-resistant peer-to-peer file storage, retrieval, and tracking.",
-    stack: ["HTML/CSS/JS", "Bootstrap", "IPFS"],
-    image: storageImg,
-    github: "https://github.com/prashanth-shetteppanavar",
-    architecture: [
-      { label: "USER", type: "start" },
-      { label: "APP", type: "tech" },
-      { label: "IPFS", type: "tech" },
-      { label: "DISTRIBUTED", type: "end" },
-    ],
-  },
-  {
-    title: "Local AI Chat Application",
-    tag: "AI / LLM",
-    number: "03",
-    desc: "A privacy-first chat UI streaming responses in real time from a local LLM via Ollama's REST API — no cloud dependency, no API cost. Token-by-token streaming via Fetch + ReadableStream.",
-    stack: ["React", "Vite", "Ollama"],
-    image: aiChatImg,
-    github: "https://github.com/prashanth-shetteppanavar",
-    architecture: [
-      { label: "BROWSER", type: "start" },
-      { label: "REACT", type: "tech" },
-      { label: "OLLAMA", type: "tech" },
-      { label: "LOCAL LLM", type: "end" },
-    ],
-  },
-  {
-    title: "VVISA — Journey by VVISA",
-    tag: "Product",
-    number: "04",
-    desc: "Internal tools and an AI-powered cinematic travel-journey feature for VVISA, a live tourism visa consultancy platform, from architecture through implementation.",
-    stack: ["React", "Node", "AI Pipelines"],
-    image: vvisaImg,
-    github: null,
-    architecture: [
-      { label: "USER", type: "start" },
-      { label: "REACT", type: "tech" },
-      { label: "AI PIPELINE", type: "tech" },
-      { label: "PLATFORM", type: "end" },
-    ],
-  },
-];
+import { PROJECTS } from "../data/projects";
 
 export default function Projects() {
   const [lightbox, setLightbox] = useState(null);
@@ -162,18 +96,18 @@ function ProjectRow({ project, reverse, onExpand }) {
 
         {/* Architecture flow */}
         <div className="flex items-center gap-2 mb-6 flex-wrap">
-          {project.architecture.map((node, ni) => (
+          {project.architecture.map((label, ni) => (
             <div key={ni} className="flex items-center gap-2">
               <span
                 className={`font-mono text-[10px] tracking-wider px-2.5 py-1 rounded border ${
-                  node.type === "start"
+                  ni === 0
                     ? "border-accent/40 text-accent bg-accent/5"
-                    : node.type === "end"
+                    : ni === project.architecture.length - 1
                     ? "border-accent2/40 text-accent2 bg-accent2/5"
                     : "border-line text-mute"
                 }`}
               >
-                {node.label}
+                {label}
               </span>
               {ni < project.architecture.length - 1 && (
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-line)" strokeWidth="1.5">
@@ -212,6 +146,12 @@ function ProjectRow({ project, reverse, onExpand }) {
             View on GitHub
           </a>
         )}
+        <a
+          href={`/projects/${project.slug}`}
+          className="inline-flex items-center gap-2 ml-5 font-mono text-xs tracking-widest uppercase text-accent hover:text-bone transition-colors"
+        >
+          Read case study <span aria-hidden="true">-&gt;</span>
+        </a>
       </motion.div>
     </div>
   );

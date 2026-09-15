@@ -13,7 +13,6 @@ const COMMANDS = [
   { label: "Open GitHub", type: "link", target: "https://github.com/prashanth-shetteppanavar" },
   { label: "Open LinkedIn", type: "link", target: "https://www.linkedin.com/in/prashanth-shetteppanavar-b680712a3/" },
   { label: "Open LeetCode", type: "link", target: "https://leetcode.com/u/prashanth_shetteppanavar/" },
-  { label: "Message on WhatsApp", type: "link", target: "https://wa.me/917676315662" },
   { label: "Email Prashanth", type: "link", target: "mailto:prashantshetteppanavar2004@gmail.com" },
   { label: "Download Resume", type: "download", target: "/Prashanth_Shetteppanavar_Resume.pdf" },
 ];

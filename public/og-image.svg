@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0A0B0E"/>
+  <path d="M0 520h1200" stroke="#22252E"/>
+  <path d="M80 80h1040v470H80z" fill="none" stroke="#22252E"/>
+  <circle cx="112" cy="114" r="10" fill="#7C5CFF"/>
+  <text x="80" y="290" fill="#EDEEF2" font-family="Sora, sans-serif" font-size="64" font-weight="700">Prashanth Shetteppanavar</text>
+  <text x="84" y="365" fill="#F5A623" font-family="JetBrains Mono, monospace" font-size="28">JAVA FULL STACK DEVELOPER</text>
+  <text x="84" y="455" fill="#8A8D98" font-family="DM Sans, sans-serif" font-size="24">Java · Spring Boot · REST APIs · SQL · React</text>
+</svg>

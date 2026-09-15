@@ -4,8 +4,8 @@ import Magnetic from "./Magnetic";
 const LINKS = [
   { label: "GitHub", href: "https://github.com/prashanth-shetteppanavar" },
   { label: "LeetCode", href: "https://leetcode.com/u/prashanth_shetteppanavar/" },
+  { label: "GeeksForGeeks", href: "https://www.geeksforgeeks.org/profile/prashantshettecrfb" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/prashanth-shetteppanavar-b680712a3/" },
-  { label: "WhatsApp", href: `https://wa.me/917676315662?text=${encodeURIComponent("Hi Prashanth! 👋\nI visited your portfolio and I'm impressed by your work.\nI'd love to discuss a potential opportunity/collaboration with you.\n\nLet's connect!")}` },
   { label: "Email", href: "mailto:prashantshetteppanavar2004@gmail.com" },
 ];
 
@@ -82,7 +82,7 @@ export default function Contact() {
               <motion.a
                 href={link.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 data-cursor="link"
                 whileHover={{ y: -3, scale: 1.06 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const TERMINAL_LINES = [
   { text: "prashanth@portfolio ~ % init", type: "command", delay: 120 },
