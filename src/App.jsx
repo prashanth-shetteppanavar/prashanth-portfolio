@@ -15,6 +15,23 @@ import Certificates from "./components/Certificates";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import ProjectPage from "./components/ProjectPage";
+import WhatIBuild from "./components/WhatIBuild";
+
+function NotFoundPage() {
+  return (
+    <main className="min-h-screen bg-ink px-6 py-32 text-bone">
+      <div className="mx-auto max-w-3xl">
+        <p className="font-mono text-accent">404</p>
+        <h1 className="mt-4 font-display text-4xl">Page not found</h1>
+        <p className="mt-4 max-w-md text-mute">The page you requested does not exist.</p>
+        <div className="mt-8 flex flex-wrap gap-5 font-mono text-xs uppercase tracking-widest">
+          <a className="text-accent hover:text-bone" href="/">Return home -&gt;</a>
+          <a className="text-accent hover:text-bone" href="/#projects">View projects -&gt;</a>
+        </div>
+      </div>
+    </main>
+  );
+}
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +56,7 @@ export default function App() {
 
   const projectMatch = window.location.pathname.match(/^\/projects\/([^/]+)\/?$/);
   if (projectMatch) return <ProjectPage slug={projectMatch[1]} />;
+  if (window.location.pathname !== "/") return <NotFoundPage />;
 
   return (
     <div className="relative bg-ink">
@@ -57,6 +75,7 @@ export default function App() {
       <Navbar />
       <main id="main-content">
         <Hero />
+        <WhatIBuild />
         <About />
         <Education />
         <Skills />

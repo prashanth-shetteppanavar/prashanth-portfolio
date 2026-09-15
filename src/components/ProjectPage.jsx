@@ -9,9 +9,24 @@ export default function ProjectPage({ slug }) {
     document.title = `${project.title} | Prashanth Shetteppanavar`;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute("content", `${project.title}: ${project.desc}`);
+    const pageTitle = `${project.title} | Prashanth Shetteppanavar`;
+    const pageUrl = `https://prashanth-portfolio-plum.vercel.app/projects/${project.slug}`;
+    const metadata = {
+      'meta[property="og:title"]': pageTitle,
+      'meta[property="og:description"]': project.desc,
+      'meta[property="og:url"]': pageUrl,
+      'meta[name="twitter:title"]': pageTitle,
+      'meta[name="twitter:description"]': project.desc,
+    };
+    const previousMetadata = Object.entries(metadata).map(([selector, value]) => {
+      const element = document.querySelector(selector);
+      const previous = element?.getAttribute("content");
+      element?.setAttribute("content", value);
+      return [element, previous];
+    });
     const canonical = document.querySelector('link[rel="canonical"]');
     const previousCanonical = canonical?.getAttribute("href");
-    if (canonical) canonical.setAttribute("href", `https://prashanth-portfolio-plum.vercel.app/projects/${project.slug}`);
+    if (canonical) canonical.setAttribute("href", pageUrl);
     const schema = document.createElement("script");
     schema.type = "application/ld+json";
     schema.textContent = JSON.stringify({
@@ -19,16 +34,30 @@ export default function ProjectPage({ slug }) {
       "@type": "CreativeWork",
       name: project.title,
       description: project.desc,
-      url: `https://prashanth-portfolio-plum.vercel.app/projects/${project.slug}`,
+      url: pageUrl,
       creator: { "@type": "Person", name: "Prashanth Shetteppanavar", url: "https://prashanth-portfolio-plum.vercel.app/" },
       image: `https://prashanth-portfolio-plum.vercel.app${project.image}`,
     });
+    const breadcrumbSchema = document.createElement("script");
+    breadcrumbSchema.type = "application/ld+json";
+    breadcrumbSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://prashanth-portfolio-plum.vercel.app/" },
+        { "@type": "ListItem", position: 2, name: "Projects", item: "https://prashanth-portfolio-plum.vercel.app/#projects" },
+        { "@type": "ListItem", position: 3, name: project.title, item: `https://prashanth-portfolio-plum.vercel.app/projects/${project.slug}` },
+      ],
+    });
     document.head.appendChild(schema);
+    document.head.appendChild(breadcrumbSchema);
     return () => {
       document.title = "Prashanth Shetteppanavar | Java Full Stack Developer";
       if (description) description.setAttribute("content", "Prashanth Shetteppanavar is a Java Full Stack Developer in Bengaluru building backend systems, REST APIs, database-backed applications and React interfaces.");
       if (canonical && previousCanonical) canonical.setAttribute("href", previousCanonical);
+      previousMetadata.forEach(([element, previous]) => element?.setAttribute("content", previous));
       schema.remove();
+      breadcrumbSchema.remove();
     };
   }, [project]);
 
@@ -47,7 +76,13 @@ export default function ProjectPage({ slug }) {
   return (
     <main className="min-h-screen bg-ink text-bone">
       <div className="mx-auto max-w-5xl px-6 pb-24 pt-32 md:pt-40">
-        <a href="/#projects" className="font-mono text-xs uppercase tracking-widest text-mute hover:text-accent">&lt;- Back to projects</a>
+        <nav aria-label="Breadcrumb" className="font-mono text-xs uppercase tracking-widest text-mute">
+          <a href="/" className="hover:text-accent">Home</a>
+          <span className="mx-2 text-line" aria-hidden="true">/</span>
+          <a href="/#projects" className="hover:text-accent">Projects</a>
+          <span className="mx-2 text-line" aria-hidden="true">/</span>
+          <span className="text-accent2">{project.title}</span>
+        </nav>
         <div className="mt-12 grid gap-12 md:grid-cols-[1.05fr_0.95fr] md:items-end">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent2">{project.tag} / {project.number}</p>

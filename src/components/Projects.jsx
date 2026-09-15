@@ -47,10 +47,12 @@ function ProjectRow({ project, reverse, onExpand }) {
       ref={ref}
       className={`grid md:grid-cols-2 gap-8 md:gap-14 items-center ${reverse ? "md:[direction:rtl]" : ""}`}
     >
-      <motion.div
+      <motion.button
+        type="button"
         style={{ x: imageX }}
         data-cursor="card"
         onClick={onExpand}
+        aria-label={`Enlarge ${project.title} preview`}
         className={`group relative rounded-2xl overflow-hidden border border-line cursor-pointer ${
           reverse ? "md:[direction:ltr]" : ""
         }`}
@@ -75,7 +77,7 @@ function ProjectRow({ project, reverse, onExpand }) {
             </span>
           </motion.div>
         </div>
-      </motion.div>
+      </motion.button>
 
       <motion.div style={{ x: textX }} className={reverse ? "md:[direction:ltr]" : ""}>
         <div className="flex items-center gap-4 mb-4">
