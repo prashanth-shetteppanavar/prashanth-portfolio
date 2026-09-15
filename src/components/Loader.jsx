@@ -15,7 +15,9 @@ export default function Loader({ onDone }) {
   const [progress, setProgress] = useState(0);
   const doneRef = useRef(false);
   const onDoneRef = useRef(onDone);
-  onDoneRef.current = onDone;
+  useEffect(() => {
+    onDoneRef.current = onDone;
+  }, [onDone]);
 
   useEffect(() => {
     const fire = () => {

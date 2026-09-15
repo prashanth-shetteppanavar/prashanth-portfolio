@@ -26,22 +26,19 @@ export default function CommandPalette() {
     const onKey = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setOpen((v) => !v);
+        setOpen((v) => {
+          if (!v) {
+            setQuery("");
+            setSelected(0);
+          }
+          return !v;
+        });
       }
       if (e.key === "Escape") setOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-
-  useEffect(() => {
-    if (open) {
-      setQuery("");
-      setSelected(0);
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [open]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";

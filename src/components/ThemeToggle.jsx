@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(() => typeof window === "undefined" || localStorage.getItem("theme") !== "light");
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "light") {
-      setDark(false);
+    document.documentElement.classList.toggle("light", !dark);
+  }, [dark]);
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") === "light") {
       document.documentElement.classList.add("light");
     }
   }, []);

@@ -44,9 +44,10 @@ function Particles() {
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      const r = 6 + Math.random() * 7;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
+      const seed = i * 12.9898;
+      const r = 6 + (Math.sin(seed) * 0.5 + 0.5) * 7;
+      const theta = (Math.sin(seed + 4.2) * 0.5 + 0.5) * Math.PI * 2;
+      const phi = Math.acos(2 * (Math.sin(seed + 8.4) * 0.5 + 0.5) - 1);
       arr[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       arr[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.5 + 1;
       arr[i * 3 + 2] = r * Math.cos(phi) - 5;

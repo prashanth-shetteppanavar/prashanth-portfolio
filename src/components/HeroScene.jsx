@@ -15,8 +15,8 @@ function OrbitRing() {
       const radius = 3.2 + Math.sin(i * 1.7) * 0.4;
       const yOff = Math.sin(i * 2.3) * 0.6;
       const type = i % 4; // 0=octa, 1=tetra, 2=icosa, 3=box
-      const scale = 0.06 + Math.random() * 0.06;
-      const speed = 0.3 + Math.random() * 0.4;
+      const scale = 0.06 + (Math.sin(i * 3.1) * 0.5 + 0.5) * 0.06;
+      const speed = 0.3 + (Math.sin(i * 4.7) * 0.5 + 0.5) * 0.4;
       const color = i % 3 === 0 ? "#F5A623" : "#7C5CFF";
       arr.push({ angle, radius, yOff, type, scale, speed, color, baseAngle: angle });
     }
@@ -151,12 +151,12 @@ function FloatingCubes() {
     for (let i = 0; i < cubeCount; i++) {
       arr.push({
         pos: [
-          (Math.random() - 0.5) * 10,
-          (Math.random() - 0.5) * 5,
-          -2 - Math.random() * 5,
+          Math.sin(i * 2.7) * 5,
+          Math.sin(i * 1.9) * 2.5,
+          -2 - (Math.sin(i * 3.8) * 0.5 + 0.5) * 5,
         ],
-        scale: 0.08 + Math.random() * 0.12,
-        rotSpeed: 0.3 + Math.random() * 0.7,
+        scale: 0.08 + (Math.sin(i * 5.1) * 0.5 + 0.5) * 0.12,
+        rotSpeed: 0.3 + (Math.sin(i * 6.3) * 0.5 + 0.5) * 0.7,
       });
     }
     return arr;

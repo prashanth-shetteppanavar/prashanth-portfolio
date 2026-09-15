@@ -83,7 +83,7 @@ function RotatingRole() {
 
     if (!isDeleting && !isPaused) {
       if (display.length < current.length) {
-        timer = setTimeout(() => setDisplay(current.slice(0, display.length + 1)), 65 + Math.random() * 40);
+        timer = setTimeout(() => setDisplay(current.slice(0, display.length + 1)), 85);
       } else {
         timer = setTimeout(() => setIsPaused(true), 2200);
       }

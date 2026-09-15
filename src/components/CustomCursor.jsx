@@ -4,13 +4,12 @@ export default function CustomCursor() {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const [variant, setVariant] = useState("default");
-  const [enabled, setEnabled] = useState(false);
+  const [enabled] = useState(() => typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
   const posRef = useRef({ x: 0, y: 0 });
   const ringPos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    setEnabled(fine);
+    const fine = enabled;
     if (!fine) return;
 
     let raf;
@@ -39,7 +38,7 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
     if (!enabled) return;
