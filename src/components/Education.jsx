@@ -5,7 +5,7 @@ const EDUCATION = [
     degree: "B.E. — Information Science & Engineering",
     school: "East Point College of Engineering and Technology, Bengaluru, Karnataka",
     when: "Dec 2022 — Jul 2026",
-    detail: "CGPA: 8.02",
+    detail: "CGPA: 8.2",
   },
   {
     degree: "Pre-University (PU)",

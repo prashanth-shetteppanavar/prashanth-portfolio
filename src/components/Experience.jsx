@@ -2,6 +2,12 @@ import { motion } from "framer-motion";
 
 const TIMELINE = [
   {
+    when: "Aug 2026",
+    title: "Founder Team – AI Engineer Intern",
+    org: "mittoX (Vindox Services Private Limited), Bengaluru",
+    desc: "Worked on an AI-powered call operations platform with CRM automation, call tracking, agent workflows, and AI-generated notes for lead follow-ups.",
+  },
+  {
     when: "Feb 2026 — May 2026",
     title: "Java Full Stack Developer Intern",
     org: "Dhee Coding Lab, BTM Branch, Bengaluru",
@@ -11,19 +17,13 @@ const TIMELINE = [
     when: "Sep 2025",
     title: "Odoo × NMIT Hackathon 2025",
     org: "Nitte Meenakshi Institute of Technology, Bengaluru",
-    desc: "24-hour national hackathon with Odoo — built a cloud accounting system with the team.",
-  },
-  {
-    when: "Aug 2026 · 1 month",
-    title: "Intern, VVISA",
-    org: "vvisa.in — Visa & Tourism Consultancy",
-    desc: "1-month internship building internal tools, automation and an AI-powered travel-journey feature for a live tourism platform.",
+    desc: "24-hour hackathon where the team built a cloud-based accounting system using Odoo and collaborative rapid prototyping.",
   },
   {
     when: "Jul 2026",
     title: "B.E. Information Science & Engineering",
     org: "East Point College of Engineering and Technology, Bengaluru",
-    desc: "Graduated 2026 — CGPA 8.02. Focus: Java, Data Structures, DBMS, Web Technologies.",
+    desc: "Graduated 2026 — CGPA 8.2. Focus: Java, Data Structures, DBMS, Web Technologies, and application design.",
   },
 ];
 

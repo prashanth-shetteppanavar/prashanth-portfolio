@@ -4,17 +4,17 @@ import heroPhoto from "../assets/portrait.jpeg";
 import CountUp from "./CountUp";
 
 const STATS = [
-  { value: 8.02, decimals: 2, suffix: "", label: "CGPA" },
+  { value: 8.2, decimals: 1, suffix: "", label: "CGPA" },
   { value: 50, decimals: 0, suffix: "+", label: "DSA Problems" },
   { value: 3, decimals: 0, suffix: "★", label: "HackerRank Java" },
   { value: 4, decimals: 0, suffix: "", label: "Projects" },
 ];
 
 const TECH_CLUSTERS = [
-  { title: "BACKEND", color: "var(--c-accent)", items: ["Java", "Spring MVC", "Hibernate/JPA", "JDBC", "MySQL"] },
-  { title: "FRONTEND", color: "var(--c-accent2)", items: ["React", "JavaScript", "HTML", "CSS"] },
-  { title: "DATABASE", color: "var(--c-accent)", items: ["MySQL", "SQL"] },
-  { title: "EXPLORATION", color: "var(--c-accent2)", items: ["Local LLMs", "AI Tools", "Ollama"] },
+  { title: "BACKEND", color: "var(--c-accent)", items: ["Java", "Spring Core", "Spring MVC", "Hibernate/JPA", "Servlets", "JDBC"] },
+  { title: "FRONTEND", color: "var(--c-accent2)", items: ["React", "JavaScript", "HTML5", "CSS3"] },
+  { title: "DATABASE", color: "var(--c-accent)", items: ["MySQL", "Oracle SQL", "Supabase", "SQL"] },
+  { title: "EXPLORATION", color: "var(--c-accent2)", items: ["Local LLMs", "AI Tools", "Ollama", "Claude"] },
 ];
 
 export default function About() {
@@ -38,7 +38,11 @@ export default function About() {
 
           <p className="text-mute text-[13.5px] leading-relaxed mb-3">
             Java Full Stack Developer from Bengaluru — B.E. Information Science, East Point College
-            of Engineering and Technology (CGPA 8.02, Jul 2026).
+            of Engineering and Technology (CGPA 8.2, Jul 2026).
+          </p>
+          <p className="text-mute text-[13.5px] leading-relaxed mb-3">
+            Aug 2026: AI Engineer Intern at <span className="text-bone">mittoX</span> (Vindox Services Private Limited),
+            building AI-powered call operations and CRM automation workflows for customer engagement.
           </p>
           <p className="text-mute text-[13.5px] leading-relaxed mb-3">
             Feb–May 2026: Java Full Stack internship at <span className="text-bone">Dhee Coding Lab</span> (BTM) —
@@ -48,11 +52,11 @@ export default function About() {
           <p className="text-mute text-[13.5px] leading-relaxed mb-3">
             50+ DSA on LeetCode · <span className="text-bone">3★ HackerRank Java</span> ·
             24h <span className="text-bone">Odoo × NMIT Hackathon 2025</span> (cloud accounting system).
-            I use local LLMs via Ollama to ship faster.
+            I use local LLMs via Ollama and AI-assisted tools to ship faster.
           </p>
           <p className="text-mute text-[13.5px] leading-relaxed">
-            Now building internal tools &amp; AI travel-journey features for <span className="text-bone">VVISA</span>{" "}
-            (visa &amp; tourism platform) — plus projects in healthcare booking, decentralized storage &amp; local-AI chat.
+            Now building internal tools, backend workflows, and AI-assisted product features with a focus on clean data
+            flows and user-friendly full-stack experiences.
           </p>
 
           <div className="mt-7 grid grid-cols-2 gap-3">

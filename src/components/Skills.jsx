@@ -24,8 +24,8 @@ const ORBITS = [
     duration: 22,
     items: [
       { name: "Java", icon: "java/java-original.svg" },
-      { name: "Spring", icon: "spring/spring-original.svg" },
-      { name: "Hibernate", icon: "hibernate/hibernate-original.svg" },
+      { name: "Spring MVC", icon: "spring/spring-original.svg" },
+      { name: "Hibernate/JPA", icon: "hibernate/hibernate-original.svg" },
     ],
   },
   {
@@ -46,24 +46,62 @@ const ORBITS = [
       { name: "HTML5", icon: "html5/html5-original.svg" },
       { name: "CSS3", icon: "css3/css3-original.svg" },
       { name: "Oracle SQL", icon: "oracle/oracle-original.svg" },
+      { name: "Supabase", icon: null },
     ],
   },
 ];
 
 const TOOLS = [
+  { name: "Git", icon: "git/git-original.svg" },
   { name: "GitHub", icon: "github/github-original.svg" },
   { name: "Postman", icon: "postman/postman-original.svg" },
-  { name: "Vercel", icon: "vercel/vercel-original.svg" },
   { name: "VS Code", icon: "vscode/vscode-original.svg" },
   { name: "Eclipse", icon: "eclipse/eclipse-original.svg" },
   { name: "Maven", icon: "maven/maven-original.svg" },
-  { name: "npm", icon: "npm/npm-original-wordmark.svg" },
-  { name: "Linux", icon: "linux/linux-original.svg" },
-  { name: "IntelliJ IDEA", icon: "intellij/intellij-original.svg" },
+  { name: "Vercel", icon: "vercel/vercel-original.svg" },
   { name: "Render", icon: null },
+  { name: "Supabase", icon: "supabase/supabase-original.svg" },
+  { name: "Claude", icon: null },
+  { name: "Ollama", icon: null },
+  { name: "Codex", icon: null },
+  { name: "IntelliJ IDEA", icon: "intellij/intellij-original.svg" },
+  { name: "Linux", icon: "linux/linux-original.svg" },
 ];
 
 const ICON_BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
+
+function ToolIcon({ tool }) {
+  if (tool.icon) {
+    return (
+      <img
+        src={ICON_BASE + tool.icon}
+        alt={tool.name}
+        className="relative z-10 h-7 w-7 transition-all duration-300 group-hover:rotate-[360deg] group-hover:scale-110"
+        loading="lazy"
+      />
+    );
+  }
+
+  const badgeMap = {
+    Supabase: { label: "S", gradient: "from-emerald-500 to-lime-400" },
+    Claude: { label: "C", gradient: "from-violet-500 to-fuchsia-500" },
+    Ollama: { label: "O", gradient: "from-cyan-500 to-sky-500" },
+    Codex: { label: "X", gradient: "from-amber-500 to-orange-500" },
+    Render: { label: "R", gradient: "from-pink-500 to-rose-500" },
+  };
+
+  const style = badgeMap[tool.name] || { label: tool.name.slice(0, 1).toUpperCase(), gradient: "from-accent to-accent2" };
+
+  return (
+    <div
+      className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br ${style.gradient} text-[10px] font-bold text-white shadow-lg shadow-accent/20 transition-all duration-300 group-hover:rotate-[360deg] group-hover:scale-110`}
+      aria-label={tool.name}
+      title={tool.name}
+    >
+      {style.label}
+    </div>
+  );
+}
 
 export default function Skills() {
   const [paused, setPaused] = useState(null);
@@ -211,19 +249,7 @@ export default function Skills() {
                       <span className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="relative">
                         <div className="absolute inset-0 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300" />
-                        {tool.icon ? (
-                          <img
-                            src={ICON_BASE + tool.icon}
-                            alt={tool.name}
-                            className="relative z-10 h-7 w-7 transition-all duration-300 group-hover:rotate-[360deg] group-hover:scale-110"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <svg className="relative z-10 h-7 w-7 text-mute transition-all duration-300 group-hover:rotate-[360deg] group-hover:scale-110 group-hover:text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                            <path d="M12 2 3 8v8l9 6 9-6V8l-9-6Z" strokeLinejoin="round" />
-                            <path d="M3 8l9 6 9-6M12 14v8" strokeLinejoin="round" />
-                          </svg>
-                        )}
+                        <ToolIcon tool={tool} />
                       </div>
                       <span className="font-mono text-[10px] tracking-wide text-mute text-center leading-tight transition-colors duration-300 group-hover:text-accent">
                         {tool.name}
